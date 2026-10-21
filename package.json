@@ -1,0 +1,22 @@
+{
+  "name": "playwright-traceability-suite",
+  "license": "MIT",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Playwright E2E test suite with traceability matrix, deterministic execution and HTML/JUnit reports.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:front": "playwright test --grep @front",
+    "test:integ": "playwright test --grep @integracao",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.0.0",
+    "axe-core": "^4.10.0"
+  }
+}

@@ -1,0 +1,2803 @@
+# Matriz de rastreabilidade â€” Consulta por Ãrea de PrestaÃ§Ã£o
+#
+# Fonte Ãºnica da verdade para o cruzamento CASO (CT) <-> REQUISITO (RF).
+# O reporter `ferramentas/reporter-rastreabilidade.ts` lÃª este ficheiro e cruza-o
+# com as annotations dos testes (`caso`, `requisito`) para gerar a matriz de cobertura.
+#
+# Ao adicionar um caso de teste:
+#   1. cria a entrada em `casos:` com os `requisitos:` que ele exercita;
+#   2. no `test(...)`, adiciona as annotations { type: 'caso' } e { type: 'requisito' };
+#   3. documenta o caso em docs/casos-de-teste.md.
+
+fonte:
+  plano_qa: ../../QA/Consulta-Area-Prestacao.md
+  documento_requisitos: >-
+    CCM/Base de conhecimento/01 - DocumentaÃ§Ãµes/sp-project-assets_130_CCM-SNS_Documento_Requisitos.md
+  casos_legiveis: docs/casos-de-teste.md
+
+requisitos:
+  RF29:
+    titulo: Consulta de Documentos por Ãrea de PrestaÃ§Ã£o
+    descricao: >-
+      Pesquisa/consulta por Ã¡rea com filtros, grade de resultados com grupos
+      "Comunicado" e "Apurado", ordenaÃ§Ã£o, paginaÃ§Ã£o e exportaÃ§Ã£o XLSX.
+    seccao_plano: 'Â§3â€“Â§5 â€” Pesquisa de faturas / lotes / prestaÃ§Ãµes por Ã¡rea'
+  RF21:
+    titulo: ApresentaÃ§Ã£o dos dados de verificaÃ§Ã£o da fatura
+    descricao: >-
+      Detalhe da fatura em modo leitura: cabeÃ§alho, totais Comunicado vs Apurado,
+      localizaÃ§Ã£o de arquivo, datas e utilizadores operacionais.
+    seccao_plano: 'Â§3 â€” Detalhe da fatura â€” apresentaÃ§Ã£o dos dados de verificaÃ§Ã£o'
+  RF32:
+    titulo: ApresentaÃ§Ã£o dos resultados de conferÃªncia
+    descricao: >-
+      Resultado da conferÃªncia apresentado (grupo de colunas "Apurado",
+      diferenÃ§as, erros do catÃ¡logo TRCFERROS, estados CSE/CCE).
+    seccao_plano: 'Â§3 â€” Detalhe da fatura â€” resultados de conferÃªncia apresentados'
+  WCAG21AA:
+    titulo: Acessibilidade WCAG 2.1 nÃ­vel AA
+    descricao: >-
+      Interface conforme WCAG 2.1 AA â€” 0 violaÃ§Ãµes de impacto crÃ­tico ou sÃ©rio
+      (analisadas com axe-core).
+    seccao_plano: 'Traceability Suite 20250077 Â§4.6 â€” Testes de Interface / Usabilidade'
+
+  RF26:
+    titulo: ConvenÃ§Ãµes (dados de referÃªncia)
+    descricao: >-
+      Consulta das convenÃ§Ãµes (pesquisa, detalhe, conta corrente, processos de
+      conferÃªncia) em Dados de ReferÃªncia.
+    seccao_plano: 'Roteiro 24-09-2026 â€” padrÃµes de UI de Dados de ReferÃªncia (A.1.1, B2)'
+  RF27:
+    titulo: Embalagens e Medicamentos (inclui CNPEM)
+    descricao: >-
+      Consulta da base de dados de referÃªncia de medicamentos e produtos de saÃºde
+      (cÃ³digo, CNPEM, designaÃ§Ã£o, grupo homogÃ©neo, tipo de produto).
+    seccao_plano: 'Roteiro 24-09-2026 â€” padrÃµes de UI de Dados de ReferÃªncia (Parte A, A.1.3, B1, B4)'
+  RF28:
+    titulo: Exames MCDT
+    descricao: >-
+      Consulta do catÃ¡logo de exames MCDT (pesquisa, detalhe, histÃ³rico de preÃ§os e
+      relaÃ§Ãµes entre exames).
+    seccao_plano: 'Roteiro 24-09-2026 â€” padrÃµes de UI de Dados de ReferÃªncia (A.1.12, B14)'
+  RF57:
+    titulo: GestÃ£o de Dados de ReferÃªncia
+    descricao: >-
+      GestÃ£o centralizada dos restantes dados de referÃªncia (EFR, Locais de PrescriÃ§Ã£o,
+      MÃ©dicos, Vacinas, HemodiÃ¡lise, ServiÃ§os DP, Sistemas CRD, Patologias Termais,
+      Diplomas, ConvenÃ§Ãµes SICAD), incluindo formulÃ¡rios de criar/editar.
+    seccao_plano: 'Roteiro 24-09-2026 â€” padrÃµes de UI de Dados de ReferÃªncia (A.1, B3, B5â€“B13, Parte C)'
+
+  # --- ConferÃªncia (PRD ConferÃªncia v0.1) â€” usados pela C1 VisualizaÃ§Ã£o (08-10-2026) ---
+  CONF-PRD-5:
+    titulo: 'Estados de erro e URLs invÃ¡lidas (PRD ConferÃªncia Â§5)'
+    descricao: 'Estados de erro e URLs invÃ¡lidas (PRD ConferÃªncia Â§5)'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-PRD-2.2:
+    titulo: 'Menu e navegaÃ§Ã£o da ConferÃªncia (PRD ConferÃªncia Â§2.2)'
+    descricao: 'Menu e navegaÃ§Ã£o da ConferÃªncia (PRD ConferÃªncia Â§2.2)'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-PRD-3.2:
+    titulo: 'Estados da Ã¡rea no ciclo (PRD ConferÃªncia Â§3.2)'
+    descricao: 'Estados da Ã¡rea no ciclo (PRD ConferÃªncia Â§3.2)'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-01:
+    titulo: 'O sistema deve apresentar, para o ciclo escolhido, um cartÃ£o por Ã¡rea de conferÃªncia com n.Âº de facturas, n.Âº â€¦'
+    descricao: 'O sistema deve apresentar, para o ciclo escolhido, um cartÃ£o por Ã¡rea de conferÃªncia com n.Âº de facturas, n.Âº de prestaÃ§Ãµes, % de conferÃªncia e estado da Ã¡rea.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-02:
+    titulo: 'O Cockpit deve propor por omissÃ£o o ciclo em curso e nÃ£o deve oferecer ciclos planeados.'
+    descricao: 'O Cockpit deve propor por omissÃ£o o ciclo em curso e nÃ£o deve oferecer ciclos planeados.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-03:
+    titulo: 'Os KPIs devem refletir o estado real em tempo prÃ³ximo do real, sem bloquear o ecrÃ£.'
+    descricao: 'Os KPIs devem refletir o estado real em tempo prÃ³ximo do real, sem bloquear o ecrÃ£.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-04:
+    titulo: 'O Cockpit deve permitir *drill-down* por Ã¡rea com: prestaÃ§Ãµes rececionadas, enriquecidas, conferÃªncia automÃ¡tiâ€¦'
+    descricao: 'O Cockpit deve permitir *drill-down* por Ã¡rea com: prestaÃ§Ãµes rececionadas, enriquecidas, conferÃªncia automÃ¡tica, conferÃªncia manual, fila de processamento e registo de execuÃ§Ãµes.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-05:
+    titulo: 'O gestor deve poder disparar a conferÃªncia automÃ¡tica de uma Ã¡rea, escolhendo workflows e, opcionalmente, um râ€¦'
+    descricao: 'O gestor deve poder disparar a conferÃªncia automÃ¡tica de uma Ã¡rea, escolhendo workflows e, opcionalmente, um recorte por prestador, factura, prestaÃ§Ã£o e cÃ³digo de erro, com prÃ©-visualizaÃ§Ã£o do volume antes de confirmar.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-07:
+    titulo: 'O gestor deve poder pausar e retomar uma execuÃ§Ã£o em curso.'
+    descricao: 'O gestor deve poder pausar e retomar uma execuÃ§Ã£o em curso.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-09:
+    titulo: 'O Cockpit deve monitorizar erros e qualidade do ciclo.'
+    descricao: 'O Cockpit deve monitorizar erros e qualidade do ciclo.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-10:
+    titulo: 'Cada Ã¡rea deve ter um arranque automÃ¡tico da conferÃªncia, ligÃ¡vel e desligÃ¡vel, que sÃ³ dispara com a Ã¡rea ativâ€¦'
+    descricao: 'Cada Ã¡rea deve ter um arranque automÃ¡tico da conferÃªncia, ligÃ¡vel e desligÃ¡vel, que sÃ³ dispara com a Ã¡rea ativa, o interruptor ligado e a janela do calendÃ¡rio aberta.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-11:
+    titulo: 'O disparo deve ser recusado antes do fim da janela de receÃ§Ã£o da Ã¡rea e em ciclos planeados.'
+    descricao: 'O disparo deve ser recusado antes do fim da janela de receÃ§Ã£o da Ã¡rea e em ciclos planeados.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-12:
+    titulo: 'O gestor deveria poder re-enriquecer as facturas do recorte antes de conferir.'
+    descricao: 'O gestor deveria poder re-enriquecer as facturas do recorte antes de conferir.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-13:
+    titulo: 'O gestor deveria poder forÃ§ar uma tarefa manual de revisÃ£o para as prestaÃ§Ãµes do recorte que saiam sem pendÃªncâ€¦'
+    descricao: 'O gestor deveria poder forÃ§ar uma tarefa manual de revisÃ£o para as prestaÃ§Ãµes do recorte que saiam sem pendÃªncia.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-14:
+    titulo: 'O gestor deve poder reconferir prestaÃ§Ãµes jÃ¡ conferidas a partir do disparo (Â«Incluir prestaÃ§Ãµes jÃ¡ conferidasâ€¦'
+    descricao: 'O gestor deve poder reconferir prestaÃ§Ãµes jÃ¡ conferidas a partir do disparo (Â«Incluir prestaÃ§Ãµes jÃ¡ conferidasÂ»), mantendo os erros registados pelo operador.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-15:
+    titulo: 'O sistema deve permitir configurar e consultar, por ciclo e Ã¡rea, a janela de receÃ§Ã£o, o limite de despesa nÃ£oâ€¦'
+    descricao: 'O sistema deve permitir configurar e consultar, por ciclo e Ã¡rea, a janela de receÃ§Ã£o, o limite de despesa nÃ£o conferida e o limite de despesa conferida.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-18:
+    titulo: 'O gestor deve poder gerir os marcos do processo de cada Ã¡rea (adicionar, remover os seus, data planeada, avisoâ€¦'
+    descricao: 'O gestor deve poder gerir os marcos do processo de cada Ã¡rea (adicionar, remover os seus, data planeada, aviso, ajuste a dia Ãºtil).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-19:
+    titulo: 'O gestor deve poder criar tipos de marco com regra de prÃ©-cÃ¡lculo.'
+    descricao: 'O gestor deve poder criar tipos de marco com regra de prÃ©-cÃ¡lculo.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-20:
+    titulo: 'O gestor deve poder definir regras de preenchimento por Ã¡rea e data, aplicadas aos ciclos criados a partir de â€¦'
+    descricao: 'O gestor deve poder definir regras de preenchimento por Ã¡rea e data, aplicadas aos ciclos criados a partir de entÃ£o.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-21:
+    titulo: 'O sistema deve criar os ciclos futuros e abrir as Ã¡reas automaticamente.'
+    descricao: 'O sistema deve criar os ciclos futuros e abrir as Ã¡reas automaticamente.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-22:
+    titulo: 'O sistema deve aplicar alertas visuais quando os prazos forem ultrapassados, sem bloqueio impeditivo.'
+    descricao: 'O sistema deve aplicar alertas visuais quando os prazos forem ultrapassados, sem bloqueio impeditivo.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-23:
+    titulo: 'O gestor deve poder consultar, incluir, inativar e reativar feriados nacionais e regionais, com recÃ¡lculo das â€¦'
+    descricao: 'O gestor deve poder consultar, incluir, inativar e reativar feriados nacionais e regionais, com recÃ¡lculo das datas planeadas dependentes.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-25:
+    titulo: 'O sistema deve avaliar periodicamente regras de controlo (integridade, SLA, taxas de erro anormais), registar â€¦'
+    descricao: 'O sistema deve avaliar periodicamente regras de controlo (integridade, SLA, taxas de erro anormais), registar ocorrÃªncias, notificar os responsÃ¡veis e suspender o lote ou fila afetados quando aplicÃ¡vel.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-26:
+    titulo: 'O sistema deve disponibilizar um ecrÃ£ de gestÃ£o de exceÃ§Ãµes de Cuidados Continuados para rever facturas sinaliâ€¦'
+    descricao: 'O sistema deve disponibilizar um ecrÃ£ de gestÃ£o de exceÃ§Ãµes de Cuidados Continuados para rever facturas sinalizadas antes do fecho.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-27:
+    titulo: 'O sistema deve permitir pesquisar workflows de conferÃªncia e consultar o detalhe com as regras agrupadas por fâ€¦'
+    descricao: 'O sistema deve permitir pesquisar workflows de conferÃªncia e consultar o detalhe com as regras agrupadas por fase e o histÃ³rico de pedidos.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-29:
+    titulo: 'O sistema deve apresentar todas as regras com o erro associado, o tipo de erro, o workflow (e assim a Ã¡rea) e â€¦'
+    descricao: 'O sistema deve apresentar todas as regras com o erro associado, o tipo de erro, o workflow (e assim a Ã¡rea) e o estado, com filtros.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-33:
+    titulo: 'Cada regra deve poder ser associada ao respetivo enquadramento legal (diploma, artigo, clÃ¡usula ou norma) e, sâ€¦'
+    descricao: 'Cada regra deve poder ser associada ao respetivo enquadramento legal (diploma, artigo, clÃ¡usula ou norma) e, se possÃ­vel, consultÃ¡vel no sistema.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-35:
+    titulo: 'Nenhuma alteraÃ§Ã£o de regra ou workflow deve ser aplicada sem aprovaÃ§Ã£o de um segundo utilizador, com vigÃªncia â€¦'
+    descricao: 'Nenhuma alteraÃ§Ã£o de regra ou workflow deve ser aplicada sem aprovaÃ§Ã£o de um segundo utilizador, com vigÃªncia imediata ou agendada, histÃ³rico e diferenÃ§a antes/depois.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-36:
+    titulo: 'O sistema deve manter controlo de versÃµes das regras, com possibilidade de *rollback*.'
+    descricao: 'O sistema deve manter controlo de versÃµes das regras, com possibilidade de *rollback*.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-37:
+    titulo: 'O sistema deve registar cada execuÃ§Ã£o do motor e permitir consultÃ¡-la por Ã¡rea, workflow, erro, data e cadeia â€¦'
+    descricao: 'O sistema deve registar cada execuÃ§Ã£o do motor e permitir consultÃ¡-la por Ã¡rea, workflow, erro, data e cadeia factura/lote/prestaÃ§Ã£o, com os passos percorridos, o contexto e os erros capturados.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-41:
+    titulo: 'O operador deve ter uma Worklist com as suas tarefas pendentes.'
+    descricao: 'O operador deve ter uma Worklist com as suas tarefas pendentes.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-42:
+    titulo: 'O ecrÃ£ de execuÃ§Ã£o deve mostrar lado a lado a imagem do documento e os dados capturados com os erros sugeridosâ€¦'
+    descricao: 'O ecrÃ£ de execuÃ§Ã£o deve mostrar lado a lado a imagem do documento e os dados capturados com os erros sugeridos pelo motor.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-44:
+    titulo: 'O sistema deve gerir automaticamente o ciclo de vida da tarefa e, ao concluir, reconferir a prestaÃ§Ã£o e encadeâ€¦'
+    descricao: 'O sistema deve gerir automaticamente o ciclo de vida da tarefa e, ao concluir, reconferir a prestaÃ§Ã£o e encadear nova tarefa se ficar pendÃªncia.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-46:
+    titulo: 'O operador deve poder escalar a tarefa ao supervisor com motivo; o supervisor deve decidir o destino (devolverâ€¦'
+    descricao: 'O operador deve poder escalar a tarefa ao supervisor com motivo; o supervisor deve decidir o destino (devolver ao operador, devolver ao pool, executar ele prÃ³prio).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-47:
+    titulo: 'O supervisor deve ver a carga (contadores, escaladas, pool) e poder atribuir, reatribuir, suspender, retomar, â€¦'
+    descricao: 'O supervisor deve ver a carga (contadores, escaladas, pool) e poder atribuir, reatribuir, suspender, retomar, forÃ§ar a libertaÃ§Ã£o e alterar a prioridade (atÃ© 100 tarefas).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-48:
+    titulo: 'O supervisor deve poder alocar operadores a grupos de tarefas (Ã¡rea, adquirente, origem).'
+    descricao: 'O supervisor deve poder alocar operadores a grupos de tarefas (Ã¡rea, adquirente, origem).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-49:
+    titulo: 'O supervisor deve poder marcar prestadores como prioritÃ¡rios, com vigÃªncia; as tarefas novas desses prestadoreâ€¦'
+    descricao: 'O supervisor deve poder marcar prestadores como prioritÃ¡rios, com vigÃªncia; as tarefas novas desses prestadores entram com prioridade Alta.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RF-52:
+    titulo: 'Cada transiÃ§Ã£o, nota e decisÃ£o deve ficar registada com operador e data, e o histÃ³rico da prestaÃ§Ã£o deve ser câ€¦'
+    descricao: 'Cada transiÃ§Ã£o, nota e decisÃ£o deve ficar registada com operador e data, e o histÃ³rico da prestaÃ§Ã£o deve ser consultÃ¡vel na execuÃ§Ã£o.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-01:
+    titulo: 'A conferÃªncia de uma Ã¡rea sÃ³ comeÃ§a depois do enriquecimento e, no papel, da digitalizaÃ§Ã£o e indexaÃ§Ã£o, e depoâ€¦'
+    descricao: 'A conferÃªncia de uma Ã¡rea sÃ³ comeÃ§a depois do enriquecimento e, no papel, da digitalizaÃ§Ã£o e indexaÃ§Ã£o, e depois do fim da janela de receÃ§Ã£o dessa Ã¡rea no ciclo. Ciclo planeado nÃ£o admite disparo.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-02:
+    titulo: 'Medicamentos tem 3 visÃµes (Continente/ANF, AÃ§ores/SaÃºdAÃ§or, Madeira/IASaÃºde) no Cockpit, workflows, calendÃ¡rioâ€¦'
+    descricao: 'Medicamentos tem 3 visÃµes (Continente/ANF, AÃ§ores/SaÃºdAÃ§or, Madeira/IASaÃºde) no Cockpit, workflows, calendÃ¡rio, feriados e fecho; as outras Ã¡reas sÃ£o uma sÃ³.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-03:
+    titulo: 'Workflow por tipo de lote em MED: 96 â†’ MED_LOTE96, 97 â†’ MED_LOTE97, 98 â†’ MED_LOTE98, 99 â†’ MED_LOTE99, 10â€“89 â†’ â€¦'
+    descricao: 'Workflow por tipo de lote em MED: 96 â†’ MED_LOTE96, 97 â†’ MED_LOTE97, 98 â†’ MED_LOTE98, 99 â†’ MED_LOTE99, 10â€“89 â†’ MED_LOTE_PAPEL. MCDT: LOTE97, LOTE_PAPEL, ANTIGENIO. CRD: CRD_CONFERENCIA.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-04:
+    titulo: 'As regras correm por sequÃªncia dentro do workflow, agrupadas por fase: ValidaÃ§Ã£o â†’ CÃ¡lculo â†’ PÃ³s-cÃ¡lculo â†’ Zerâ€¦'
+    descricao: 'As regras correm por sequÃªncia dentro do workflow, agrupadas por fase: ValidaÃ§Ã£o â†’ CÃ¡lculo â†’ PÃ³s-cÃ¡lculo â†’ ZerificaÃ§Ã£o. O cÃ¡lculo corre sempre, mesmo com erros. Elegibilidade falsa â†’ passo Â«NÃ£o elegÃ­velÂ».'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-14:
+    titulo: 'CalendÃ¡rio: inÃ­cio da janela derivado do ciclo anterior; limites por ordem; cada limite pode encurtar mas nÃ£o â€¦'
+    descricao: 'CalendÃ¡rio: inÃ­cio da janela derivado do ciclo anterior; limites por ordem; cada limite pode encurtar mas nÃ£o estender o teto contratual; Ã¡rea fechada nÃ£o se altera; janela herdada altera-se pelo perÃ­odo do ciclo.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-15:
+    titulo: 'Prazos ultrapassados geram alerta visual, nunca bloqueio.'
+    descricao: 'Prazos ultrapassados geram alerta visual, nunca bloqueio.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-16:
+    titulo: 'Dias Ãºteis = segunda a sexta sem feriado ativo nos Ã¢mbitos da Ã¡rea: Nacional para todas, mais AÃ§ores (SA_MED),â€¦'
+    descricao: 'Dias Ãºteis = segunda a sexta sem feriado ativo nos Ã¢mbitos da Ã¡rea: Nacional para todas, mais AÃ§ores (SA_MED), Madeira (IA_MED) ou Maia (restantes).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-18:
+    titulo: 'Tectos do disparo: 10 000 facturas + prestaÃ§Ãµes enumeradas; 25 000 identificadores por pedido; 1 000 facturas â€¦'
+    descricao: 'Tectos do disparo: 10 000 facturas + prestaÃ§Ãµes enumeradas; 25 000 identificadores por pedido; 1 000 facturas para re-enriquecer. CritÃ©rios que o servidor expande (workflow completo, prestador, cÃ³digo de erro) nÃ£o contam.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-19:
+    titulo: '% de conferÃªncia no Cockpit = (prestaÃ§Ãµes com sucesso automÃ¡tico + fechadas na conferÃªncia manual) / prestaÃ§Ãµeâ€¦'
+    descricao: '% de conferÃªncia no Cockpit = (prestaÃ§Ãµes com sucesso automÃ¡tico + fechadas na conferÃªncia manual) / prestaÃ§Ãµes; 0 sem prestaÃ§Ãµes; 100 sÃ³ quando tudo concluÃ­do; forÃ§ada a 0 em receÃ§Ã£o.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RN-22:
+    titulo: 'Os estados da conferÃªncia podem retroceder (reconferÃªncia).'
+    descricao: 'Os estados da conferÃªncia podem retroceder (reconferÃªncia).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RNF-06:
+    titulo: 'Atualidade: Cockpit e detalhe atualizados em â‰¤ 30 s (SSE ou *polling*); escaladas a cada 30 s; avisar quando oâ€¦'
+    descricao: 'Atualidade: Cockpit e detalhe atualizados em â‰¤ 30 s (SSE ou *polling*); escaladas a cada 30 s; avisar quando os dados tiverem mais de 60 s.'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-RNF-07:
+    titulo: 'ResiliÃªncia: Indisponibilidade do motor no disparo deve ser comunicada sem perda do que jÃ¡ foi aceite (503 / 2â€¦'
+    descricao: 'ResiliÃªncia: Indisponibilidade do motor no disparo deve ser comunicada sem perda do que jÃ¡ foi aceite (503 / 207); disparo nÃ£o Ã© idempotente (Q-20).'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-TR:
+    titulo: 'Comportamento transversal de pesquisa, listagens e exportaÃ§Ã£o (PRD Transversal)'
+    descricao: 'Comportamento transversal de pesquisa, listagens e exportaÃ§Ã£o (PRD Transversal)'
+    seccao_plano: 'PRD - ConferÃªncia.md v0.1; script C1 VisualizaÃ§Ã£o 08-10-2026'
+  CONF-MOV:
+    titulo: 'MovimentaÃ§Ã£o de processos entre ciclos adjacentes (ecrÃ£ novo, sem RF no PRD ConferÃªncia v0.1)'
+    descricao: 'MovimentaÃ§Ã£o de processos entre ciclos adjacentes (ecrÃ£ novo, sem RF no PRD ConferÃªncia v0.1)'
+    seccao_plano: 'ccmsns-ui #67 (develop 14d7c2b); casos CT-CONF-MOV-* de 09-10-2026'
+
+casos:
+  CT-FAT-NUMERO:
+    titulo: Pesquisar fatura pelo NÃºmero da Fatura
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura
+    tipo: positivo
+    requisitos: [RF29, RF32]
+    cenario_plano: 'Â§3 â€” @CT-FAT-NUMERO â€” Esquema do CenÃ¡rio: Pesquisar fatura pelo NÃºmero da Fatura'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-NIF:
+    titulo: Pesquisar faturas pelo NIF do Prestador
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Â§3 â€” @CT-FAT-NIF â€” Esquema do CenÃ¡rio: Pesquisar faturas pelo NIF do Prestador'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-ESTADO:
+    titulo: Pesquisar faturas por Estado
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura
+    tipo: positivo
+    requisitos: [RF29, RF32]
+    cenario_plano: 'Â§3 â€” @CT-FAT-ESTADO â€” Pesquisar faturas por Estado separa Conferida Sem/Com Erros'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-SEM-CRITERIO:
+    titulo: Pesquisar faturas sem nenhum filtro Ã© bloqueado
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura
+    tipo: negativo
+    requisitos: [RF29]
+    cenario_plano: 'Â§3 â€” @CT-FAT-SEM-CRITERIO â€” Pesquisar faturas de Medicamentos sem nenhum filtro Ã© bloqueado'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-LIMPAR:
+    titulo: Limpar filtros repÃµe a tela de Fatura ao estado inicial
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Â§3 â€” @CT-FAT-LIMPAR â€” Limpar filtros repÃµe a tela de Fatura ao estado inicial'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-PAGINACAO:
+    titulo: PaginaÃ§Ã£o da grade de faturas
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Â§2.5 CA-G-04 â€” PaginaÃ§Ã£o obrigatÃ³ria (10/pÃ¡gina; primeira/Ãºltima)'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-DETALHE-ABRIR:
+    titulo: Abrir o detalhe da fatura e validar o cabeÃ§alho somente leitura
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura/:id
+    tipo: positivo
+    requisitos: [RF21, RF32]
+    cenario_plano: 'Â§3 â€” @CT-FAT-DETALHE-ABRIR â€” Abrir o detalhe da fatura e validar o cabeÃ§alho somente leitura'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-FAT-DETALHE-INEXISTENTE:
+    titulo: Abrir o detalhe de uma fatura com identificador inexistente
+    area: Medicamentos
+    familia: fatura
+    rota: /medicamentos/factura/:id
+    tipo: robustez
+    requisitos: [RF21]
+    cenario_plano: 'Â§3 â€” @CT-FAT-DETALHE-INEXISTENTE â€” Abrir o detalhe de uma fatura com identificador inexistente'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-LOT-NUMERO-FATURA:
+    titulo: Pesquisar lotes pelo NÃºmero da Fatura
+    area: Medicamentos
+    familia: lote
+    rota: /medicamentos/lote
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Â§4 â€” @CT-LOT-NUMERO-FATURA â€” Pesquisar lotes pelo NÃºmero da Fatura'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  CT-PRE-RECEITA:
+    titulo: Pesquisar prestaÃ§Ã£o pelo NÃºmero de Receita
+    area: Medicamentos
+    familia: prestacao
+    rota: /medicamentos/prestacoes
+    tipo: positivo
+    requisitos: [RF29, RF32]
+    cenario_plano: 'Â§5 â€” @CT-PRE-RECEITA â€” Esquema do CenÃ¡rio: Pesquisar prestaÃ§Ã£o pelo NÃºmero de Receita'
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  # --- caixa-preta adicionais ---
+  CT-FAT-PROCESSO:
+    titulo: Pesquisar fatura pelo NÃºmero do Processo
+    area: Medicamentos
+    familia: fatura
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-FAT-DATA-MES:
+    titulo: Data da Fatura filtra o mÃªs inteiro
+    area: Medicamentos
+    familia: fatura
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-FAT-COMBINADO:
+    titulo: Pesquisa combinando NIF + Data + Estado (E lÃ³gico)
+    area: Medicamentos
+    familia: fatura
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-FAT-CCE:
+    titulo: Fatura Conferida Com Erros â€” aba InformaÃ§Ãµes com DiferenÃ§as e Erros
+    area: Medicamentos
+    familia: fatura
+    tipo: positivo
+    requisitos: [RF32]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-LOT-TIPO-NUMERO-LOTE:
+    titulo: Pesquisar lotes por Tipo de Lote + NÃºmero de Lote
+    area: Medicamentos
+    familia: lote
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-LOT-SEM-CRITERIO:
+    titulo: Pesquisar lotes sem filtro nÃ£o executa a consulta
+    area: Medicamentos
+    familia: lote
+    tipo: negativo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-LOT-DETALHE:
+    titulo: Abrir o detalhe do lote â€” identificaÃ§Ã£o, totais e abas
+    area: Medicamentos
+    familia: lote
+    tipo: positivo
+    requisitos: [RF21, RF32]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-PRE-NUMERO-FATURA:
+    titulo: Pesquisar prestaÃ§Ãµes pelo NÃºmero da Fatura
+    area: Medicamentos
+    familia: prestacao
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-PRE-SEM-CRITERIO:
+    titulo: Pesquisar prestaÃ§Ãµes sem critÃ©rio mÃ­nimo Ã© bloqueado
+    area: Medicamentos
+    familia: prestacao
+    tipo: negativo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  # --- interface / usabilidade (Traceability Suite Â§4.6) ---
+  CT-UI-NAV-MENU:
+    titulo: NavegaÃ§Ã£o pelo menu atÃ© os ecrÃ£s de Consulta
+    tipo_teste: interface
+    requisitos: [RF29]
+    spec: testes/plano-de-testes/interface.spec.ts
+  CT-UI-TECLADO:
+    titulo: SubmissÃ£o da pesquisa por tecla Enter (operÃ¡vel por teclado)
+    tipo_teste: interface
+    requisitos: [RF29]
+    spec: testes/plano-de-testes/interface.spec.ts
+  CT-UI-RESPONSIVO:
+    titulo: Sem overflow horizontal em vÃ¡rias larguras
+    tipo_teste: interface
+    requisitos: [RF29]
+    spec: testes/plano-de-testes/interface.spec.ts
+  CT-UI-FORMATO-PT:
+    titulo: Montantes e datas no formato pt na grelha
+    tipo_teste: interface
+    requisitos: [RF29]
+    spec: testes/plano-de-testes/interface.spec.ts
+  CT-UI-A11Y-PESQUISA:
+    titulo: axe/WCAG 2.1 AA no ecrÃ£ de Pesquisa de Faturas
+    tipo_teste: interface
+    requisitos: [RF29, WCAG21AA]
+    spec: testes/plano-de-testes/interface.spec.ts
+  CT-UI-A11Y-DETALHE:
+    titulo: axe/WCAG 2.1 AA no detalhe da fatura
+    tipo_teste: interface
+    requisitos: [RF21, WCAG21AA]
+    spec: testes/plano-de-testes/interface.spec.ts
+
+  # --- compatibilidade (Traceability Suite Â§4.10) ---
+  CT-COMPAT-RENDER:
+    titulo: EcrÃ£s de Consulta renderizam sem erros de consola nem overflow (por browser)
+    tipo_teste: compatibilidade
+    requisitos: [RF29]
+    spec: testes/plano-de-testes/compatibilidade.spec.ts
+
+  # --- recuperaÃ§Ã£o / resiliÃªncia da interface (Traceability Suite Â§4.11) ---
+  CT-RESIL-VAZIO:
+    titulo: Zero resultados Ã© tratado como vazio, nÃ£o como erro
+    tipo_teste: recuperacao
+    familia: fatura
+    requisitos: [RF29]
+    spec: testes/plano-de-testes/recuperacao.spec.ts
+  CT-FAT-ORDENACAO:
+    titulo: Ordenar a grade de faturas por uma coluna (CA-G-04)
+    area: Medicamentos
+    familia: fatura
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-FAT-EXPORTAR:
+    titulo: BotÃ£o "Exportar XLSX" sÃ³ ativo com pesquisa e resultados (CA-G-07)
+    area: Medicamentos
+    familia: fatura
+    tipo: positivo
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+
+  # --- regressÃ£o por bug (validaÃ§Ã£o de correÃ§Ãµes â€” docs/plano-de-testes/validacao-bugs-manuais.md) ---
+  CT-REG-BUG-20260910-02:
+    titulo: Alterar o tamanho de pÃ¡gina recarrega a grade e repÃµe a pÃ¡gina 1
+    area: Medicamentos
+    familia: fatura
+    tipo: robustez
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-REG-BUG-20260910-08:
+    titulo: '"InformaÃ§Ã£o Comunicada"/"Conferida" mostram a linha de totais'
+    area: Medicamentos
+    familia: fatura
+    tipo: robustez
+    requisitos: [RF32]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-REG-BUG-20260910-09:
+    titulo: '"Erros e diferenÃ§as" mostra os mesmos dados do detalhe'
+    area: Medicamentos
+    familia: fatura
+    tipo: robustez
+    requisitos: [RF32]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-REG-BUG-20260910-10:
+    titulo: '"Erros e diferenÃ§as" mostra o nÃºmero real da fatura, nÃ£o o id da rota'
+    area: Medicamentos
+    familia: fatura
+    tipo: robustez
+    requisitos: [RF21]
+    spec: testes/consulta-area-prestacao/medicamentos/medicamentos.spec.ts
+  CT-REG-BUG-20260910-04:
+    titulo: Digitar a data completa em "Data da FacturaÃ§Ã£o" Ã© aceite
+    area: Cuidados RespiratÃ³rios
+    familia: fatura
+    tipo: robustez
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/crd/crd.spec.ts
+  CT-REG-BUG-20260910-05:
+    titulo: Abrir o calendÃ¡rio sem outros filtros nÃ£o dispara erro de critÃ©rio mÃ­nimo
+    area: Cuidados RespiratÃ³rios
+    familia: fatura
+    tipo: robustez
+    requisitos: [RF29]
+    spec: testes/consulta-area-prestacao/crd/crd.spec.ts
+
+  # --- Dados de ReferÃªncia â€” roteiro de deploy dos padrÃµes de UI (PRs front #50/#55, back #31/#34), 24-09-2026 ---
+  # Gerado a partir de `npx playwright test testes/dados-referencia --list --reporter=json`.
+  CT-DR-A01:
+    titulo: 'Abrir a URL sem pesquisar: tabela vazia, sem breadcrumb, tÃ­tulo "Pesquisa â€¦"'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A01'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A02:
+    titulo: 'FormulÃ¡rio: placeholders, DescriÃ§Ã£o em 2 colunas, data vazia, Pesquisar ativo, Exportar desativado'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A02'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A03:
+    titulo: 'Escrever um filtro e carregar Enter faz a pesquisa'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A03'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A04:
+    titulo: 'Limpar devolve todos os campos ao estado inicial'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A04'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A05:
+    titulo: 'Pesquisar com a data vazia usa "hoje" e nÃ£o mostra erro de campo obrigatÃ³rio'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A05'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A06:
+    titulo: 'Pesquisar um valor inexistente mostra o texto de "pesquisa sem resultado"'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: negativo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A06'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A07:
+    titulo: 'Grelha apÃ³s pesquisa vÃ¡lida: compacta, zebrada, Ã  esquerda, aÃ§Ãµes na 1.Âª coluna, Exportar ativo'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A07'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A08:
+    titulo: 'Ordenar asc/desc no servidor, cabeÃ§alho estÃ¡vel, pÃ¡gina 2 continua a sequÃªncia'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A08'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A09:
+    titulo: 'Ordenar uma coluna de data segue a ordem cronolÃ³gica'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A09'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A10:
+    titulo: 'Coluna ocultada no seletor continua oculta apÃ³s recarregar (F5)'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A10'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A11:
+    titulo: 'Exportar descarrega o XLSX'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A11'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A16:
+    titulo: 'Coluna Estado em texto simples, sem badge'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A16'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A12:
+    titulo: 'Detalhe: h1/h2, cabeÃ§alho colapsÃ¡vel com aÃ§Ãµes, listas num cartÃ£o, Voltar no rodapÃ©'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A12'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A13:
+    titulo: 'CabeÃ§alho e cada painel recolhem e expandem de forma independente'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A13'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-B1.1:
+    titulo: 'TÃ­tulo "Detalhe CNPEM â€” <cÃ³digo>" e cabeÃ§alho em "IdentificaÃ§Ã£o" e "VigÃªncia e Estado"'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B1.1'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-B1.2:
+    titulo: 'Embalagens, HistÃ³rico, Semelhantes e Grupos HomogÃ©neos empilhados num Ãºnico cartÃ£o, sem abas'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B1.2'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-B1.3:
+    titulo: 'Ordenar uma coluna em cada uma das 4 listas'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B1.3'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A14:
+    titulo: 'Enquanto carrega, aparece o "A carregar..." padrÃ£o'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A14'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A15:
+    titulo: 'Id invÃ¡lido: erro num Alert'
+    area: 'CNPEM'
+    rota: /dados-referencia/cnpem
+    tipo: negativo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A15'
+    spec: testes/dados-referencia/cnpem/cnpem.spec.ts
+  CT-DR-A.1.1:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'ConvenÃ§Ãµes'
+    rota: /dados-referencia/convencoes
+    tipo: positivo
+    requisitos: [RF26]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.1'
+    spec: testes/dados-referencia/convencoes/convencoes.spec.ts
+  CT-DR-B2.1:
+    titulo: 'TÃ­tulo "Pesquisa ConvenÃ§Ãµes" e campo "NIF Prestador"'
+    area: 'ConvenÃ§Ãµes'
+    rota: /dados-referencia/convencoes
+    tipo: positivo
+    requisitos: [RF26]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B2.1'
+    spec: testes/dados-referencia/convencoes/convencoes.spec.ts
+  CT-DR-B2.2:
+    titulo: '"Ir paraâ€¦" no cabeÃ§alho, identificaÃ§Ã£o no cartÃ£o da Entidade com subtÃ­tulos, sub-tabelas num cartÃ£o prÃ³prio'
+    area: 'ConvenÃ§Ãµes'
+    rota: /dados-referencia/convencoes
+    tipo: positivo
+    requisitos: [RF26]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B2.2'
+    spec: testes/dados-referencia/convencoes/convencoes.spec.ts
+  CT-DR-B2.3:
+    titulo: '"Alterar" Ã© clicÃ¡vel e avisa que a alteraÃ§Ã£o ainda nÃ£o estÃ¡ disponÃ­vel'
+    area: 'ConvenÃ§Ãµes'
+    rota: /dados-referencia/convencoes
+    tipo: positivo
+    requisitos: [RF26]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B2.3'
+    spec: testes/dados-referencia/convencoes/convencoes.spec.ts
+  CT-DR-B2.4:
+    titulo: 'Sub-tabelas com moeda, % e datas formatadas; datas vazias como "â€”"'
+    area: 'ConvenÃ§Ãµes'
+    rota: /dados-referencia/convencoes
+    tipo: positivo
+    requisitos: [RF26]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B2.4'
+    spec: testes/dados-referencia/convencoes/convencoes.spec.ts
+  CT-DR-B2.5:
+    titulo: 'Conta Corrente e Processos de ConferÃªncia usam cartÃµes padrÃ£o e as tabelas ordenam'
+    area: 'ConvenÃ§Ãµes'
+    rota: /dados-referencia/convencoes
+    tipo: positivo
+    requisitos: [RF26]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B2.5'
+    spec: testes/dados-referencia/convencoes/convencoes.spec.ts
+  CT-DR-B13.1:
+    titulo: 'Ãcones de aÃ§Ã£o na cor primÃ¡ria e botÃ£o "Adicionar" com o estilo secundÃ¡rio'
+    area: 'Diplomas / Despachos'
+    rota: /dados-referencia/diplomas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B13.1'
+    spec: testes/dados-referencia/diplomas/diplomas.spec.ts
+  CT-DR-A.1.4:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'EFR â€” Entidade Financeira ResponsÃ¡vel'
+    rota: /dados-referencia/efr
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.4'
+    spec: testes/dados-referencia/efr/efr.spec.ts
+  CT-DR-B5.1:
+    titulo: 'Ordenar por Tipo Entidade, Ativa CRD e Valida RNU; Estado em texto'
+    area: 'EFR â€” Entidade Financeira ResponsÃ¡vel'
+    rota: /dados-referencia/efr
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B5.1'
+    spec: testes/dados-referencia/efr/efr.spec.ts
+  CT-DR-B5.2:
+    titulo: 'CabeÃ§alho colapsÃ¡vel com Exportar no topo, "IdentificaÃ§Ã£o" e "VigÃªncia e Estado", sem ID interno'
+    area: 'EFR â€” Entidade Financeira ResponsÃ¡vel'
+    rota: /dados-referencia/efr
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B5.2'
+    spec: testes/dados-referencia/efr/efr.spec.ts
+  CT-DR-A.1.3:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.3'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.1:
+    titulo: 'Trocar para DiabÃ©tico: filtros de embalagem limpos, sem resultados antigos antes da nova pesquisa e a pesquisa nÃ£o exige CNPEM'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.1'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.2-DIET:
+    titulo: 'Trocar para DietÃ©tico: filtros de embalagem limpos, sem resultados antigos antes da nova pesquisa e a pesquisa nÃ£o exige CNPEM'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.2-DIET'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.2-SUBS:
+    titulo: 'Trocar para Subs. Manipulada: filtros de embalagem limpos, sem resultados antigos antes da nova pesquisa e a pesquisa nÃ£o exige CNPEM'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.2-SUBS'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.3:
+    titulo: 'Cada modo guarda a sua preferÃªncia de colunas'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.3'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.4:
+    titulo: 'Exportar sempre visÃ­vel, sÃ³ ativo depois da pesquisa'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.4'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.5:
+    titulo: 'Detalhe da embalagem: identificaÃ§Ã£o e 10 listas colapsam cada uma por si e ordenam; Voltar no rodapÃ©'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.5'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.6-DIAB:
+    titulo: 'Detalhe de produto (DiabÃ©tico): cartÃ£o padrÃ£o, datas dd/mm/aaaa, sem ID interno'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.6-DIAB'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.6-DIET:
+    titulo: 'Detalhe de produto (DietÃ©tico): cartÃ£o padrÃ£o, datas dd/mm/aaaa, sem ID interno'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.6-DIET'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-B4.6-SUBS:
+    titulo: 'Detalhe de produto (Subs. Manipulada): cartÃ£o padrÃ£o, datas dd/mm/aaaa, sem ID interno'
+    area: 'Embalagens e Medicamentos'
+    rota: /dados-referencia/embalagens-medicamentos
+    tipo: positivo
+    requisitos: [RF27]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B4.6-SUBS'
+    spec: testes/dados-referencia/embalagens-medicamentos/embalagens-medicamentos.spec.ts
+  CT-DR-A.1.12:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Exames MCDT'
+    rota: /mcdts/exames
+    tipo: positivo
+    requisitos: [RF28]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.12'
+    spec: testes/dados-referencia/exames-mcdt/exames-mcdt.spec.ts
+  CT-DR-B14.1:
+    titulo: 'Filtros no grid padrÃ£o; Exportar visÃ­vel mas desativado'
+    area: 'Exames MCDT'
+    rota: /mcdts/exames
+    tipo: positivo
+    requisitos: [RF28]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B14.1'
+    spec: testes/dados-referencia/exames-mcdt/exames-mcdt.spec.ts
+  CT-DR-B14.2:
+    titulo: 'Pesquisar, ordenar e Exportar: ordenaÃ§Ã£o no servidor e XLSX descarregado'
+    area: 'Exames MCDT'
+    rota: /mcdts/exames
+    tipo: positivo
+    requisitos: [RF28]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B14.2'
+    spec: testes/dados-referencia/exames-mcdt/exames-mcdt.spec.ts
+  CT-DR-B14.3:
+    titulo: 'TÃ­tulo com o cÃ³digo do exame, cabeÃ§alho "IdentificaÃ§Ã£o", 5 blocos num cartÃ£o com tabelas ordenÃ¡veis'
+    area: 'Exames MCDT'
+    rota: /mcdts/exames
+    tipo: positivo
+    requisitos: [RF28]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B14.3'
+    spec: testes/dados-referencia/exames-mcdt/exames-mcdt.spec.ts
+  CT-DR-B14.4:
+    titulo: '"Voltar" regressa a /mcdts/exames com os filtros e os resultados'
+    area: 'Exames MCDT'
+    rota: /mcdts/exames
+    tipo: positivo
+    requisitos: [RF28]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B14.4'
+    spec: testes/dados-referencia/exames-mcdt/exames-mcdt.spec.ts
+  CT-DR-A.1.5:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Locais de PrescriÃ§Ã£o'
+    rota: /dados-referencia/locais-prescricao
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.5'
+    spec: testes/dados-referencia/locais-prescricao/locais-prescricao.spec.ts
+  CT-DR-B6.1:
+    titulo: '"Autorizado para" no grid de filtros, tabela com tÃ­tulo, data de referÃªncia vazia'
+    area: 'Locais de PrescriÃ§Ã£o'
+    rota: /dados-referencia/locais-prescricao
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B6.1'
+    spec: testes/dados-referencia/locais-prescricao/locais-prescricao.spec.ts
+  CT-DR-B6.2:
+    titulo: 'Ordenar por SNS e por Ativo'
+    area: 'Locais de PrescriÃ§Ã£o'
+    rota: /dados-referencia/locais-prescricao
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B6.2'
+    spec: testes/dados-referencia/locais-prescricao/locais-prescricao.spec.ts
+  CT-DR-B6.3:
+    titulo: 'Breadcrumb com o rÃ³tulo novo, cabeÃ§alho h1 com "Exportar Excel" no topo, Voltar no rodapÃ©'
+    area: 'Locais de PrescriÃ§Ã£o'
+    rota: /dados-referencia/locais-prescricao
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B6.3'
+    spec: testes/dados-referencia/locais-prescricao/locais-prescricao.spec.ts
+  CT-DR-B6.4:
+    titulo: 'Os 6 blocos sÃ£o tabelas padrÃ£o colapsÃ¡veis e ordenÃ¡veis; vigÃªncia em texto'
+    area: 'Locais de PrescriÃ§Ã£o'
+    rota: /dados-referencia/locais-prescricao
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B6.4'
+    spec: testes/dados-referencia/locais-prescricao/locais-prescricao.spec.ts
+  CT-DR-B6.5:
+    titulo: '"Exportar Excel" descarrega o XLSX'
+    area: 'Locais de PrescriÃ§Ã£o'
+    rota: /dados-referencia/locais-prescricao
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B6.5'
+    spec: testes/dados-referencia/locais-prescricao/locais-prescricao.spec.ts
+  CT-DR-A.1.6:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'MÃ©dicos / Prescritores'
+    rota: /dados-referencia/medicos-prescritores
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.6'
+    spec: testes/dados-referencia/medicos-prescritores/medicos-prescritores.spec.ts
+  CT-DR-B7.1:
+    titulo: 'Data de ReferÃªncia vazia e com o Datepicker padrÃ£o'
+    area: 'MÃ©dicos / Prescritores'
+    rota: /dados-referencia/medicos-prescritores
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B7.1'
+    spec: testes/dados-referencia/medicos-prescritores/medicos-prescritores.spec.ts
+  CT-DR-B7.2:
+    titulo: 'Ordenar por NÂº Prescritor e por Tipo, tambÃ©m na pÃ¡gina 2; Estado em texto'
+    area: 'MÃ©dicos / Prescritores'
+    rota: /dados-referencia/medicos-prescritores
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B7.2'
+    spec: testes/dados-referencia/medicos-prescritores/medicos-prescritores.spec.ts
+  CT-DR-B7.3:
+    titulo: 'Especialidades, SuspensÃµes e UtilizaÃ§Ã£o colapsÃ¡veis; SuspensÃµes e UtilizaÃ§Ã£o ordenam; Estado em texto'
+    area: 'MÃ©dicos / Prescritores'
+    rota: /dados-referencia/medicos-prescritores
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B7.3'
+    spec: testes/dados-referencia/medicos-prescritores/medicos-prescritores.spec.ts
+  CT-DR-A.1.11:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.11'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-B12.1:
+    titulo: 'As aÃ§Ãµes estÃ£o numa sÃ³ coluna'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B12.1'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-B12.2:
+    titulo: 'CabeÃ§alho h1, abas no padrÃ£o e "Associar tÃ©cnica" alinhado'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B12.2'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-B12.3:
+    titulo: '"CondiÃ§Ãµes clÃ­nicas" ordena'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B12.3'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C01-PAT:
+    titulo: 'Nova patologia: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-PAT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C02-PAT:
+    titulo: 'Nova patologia: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-PAT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C06-PAT:
+    titulo: 'Nova patologia: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-PAT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C01-PAT-EDIT:
+    titulo: 'Editar patologia: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-PAT-EDIT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C02-PAT-EDIT:
+    titulo: 'Editar patologia: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-PAT-EDIT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C06-PAT-EDIT:
+    titulo: 'Editar patologia: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-PAT-EDIT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C01-TEC:
+    titulo: 'Associar tÃ©cnica: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-TEC'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C02-TEC:
+    titulo: 'Associar tÃ©cnica: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-TEC'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C06-TEC:
+    titulo: 'Associar tÃ©cnica: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-TEC'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C01-TEC-EDIT:
+    titulo: 'Editar associaÃ§Ã£o de tÃ©cnica: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-TEC-EDIT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C02-TEC-EDIT:
+    titulo: 'Editar associaÃ§Ã£o de tÃ©cnica: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-TEC-EDIT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-C06-TEC-EDIT:
+    titulo: 'Editar associaÃ§Ã£o de tÃ©cnica: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Patologias Termais'
+    rota: /dados-referencia/patologias-termais
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-TEC-EDIT'
+    spec: testes/dados-referencia/patologias-termais/patologias-termais.spec.ts
+  CT-DR-A.1.9:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.9'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-B10.1:
+    titulo: 'AÃ§Ãµes numa sÃ³ coluna; coluna IVA alinhada Ã  esquerda'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B10.1'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-B10.2:
+    titulo: 'CabeÃ§alho colapsÃ¡vel; Lista de PreÃ§os, Locais Autorizados e ConvenÃ§Ãµes Habilitadas sÃ£o painÃ©is'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B10.2'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-B10.3:
+    titulo: 'Ordenar Locais (autorizado, datas) e ConvenÃ§Ãµes (NIF, prestador, datas)'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B10.3'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-B10.4:
+    titulo: 'O filtro de preÃ§os filtra a lista de preÃ§os'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B10.4'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C01:
+    titulo: 'FormulÃ¡rio vazio: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C02:
+    titulo: 'Guardar com obrigatÃ³rios vazios: mensagem por campo, nada enviado'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C03:
+    titulo: 'Duplo clique rÃ¡pido em Guardar cria sÃ³ 1 registo'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: robustez
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C03'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C04:
+    titulo: 'Erro do servidor (cÃ³digo duplicado) aparece num Alert no topo do formulÃ¡rio'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C04'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C06:
+    titulo: '"Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C05:
+    titulo: 'Editar abre o formulÃ¡rio preenchido e Guardar funciona'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C05'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C01-DP-EDIT:
+    titulo: 'Editar serviÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-DP-EDIT'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C02-DP-EDIT:
+    titulo: 'Editar serviÃ§o: obrigatÃ³rios apagados mostram as mensagens e nada Ã© enviado'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-DP-EDIT'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C06-DP-EDIT:
+    titulo: 'Editar serviÃ§o: "Voltar" sem guardar'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-DP-EDIT'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C01-DPP:
+    titulo: 'Novo preÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-DPP'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C02-DPP:
+    titulo: 'Novo preÃ§o: obrigatÃ³rios vazios mostram as mensagens e nada Ã© enviado'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-DPP'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C06-DPP:
+    titulo: 'Novo preÃ§o: "Voltar" regressa ao detalhe sem guardar'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-DPP'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C01-DPP-EDIT:
+    titulo: 'Editar preÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-DPP-EDIT'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C02-DPP-EDIT:
+    titulo: 'Editar preÃ§o: obrigatÃ³rios apagados mostram as mensagens e nada Ã© enviado'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-DPP-EDIT'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-C06-DPP-EDIT:
+    titulo: 'Editar preÃ§o: "Voltar" regressa ao detalhe sem guardar'
+    area: 'ServiÃ§os Dispensa em Proximidade'
+    rota: /dados-referencia/servicos-dispensa-proximidade
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-DPP-EDIT'
+    spec: testes/dados-referencia/servicos-dispensa-proximidade/servicos-dispensa-proximidade.spec.ts
+  CT-DR-A.1.10:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Sistemas CRD'
+    rota: /dados-referencia/sistemas-crd
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.10'
+    spec: testes/dados-referencia/sistemas-crd/sistemas-crd.spec.ts
+  CT-DR-B11.1:
+    titulo: 'Ordenar e Exportar: descarrega o XLSX'
+    area: 'Sistemas CRD'
+    rota: /dados-referencia/sistemas-crd
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B11.1'
+    spec: testes/dados-referencia/sistemas-crd/sistemas-crd.spec.ts
+  CT-DR-B11.2:
+    titulo: 'CabeÃ§alho h1 e as 4 listas sÃ£o painÃ©is colapsÃ¡veis num cartÃ£o'
+    area: 'Sistemas CRD'
+    rota: /dados-referencia/sistemas-crd
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B11.2'
+    spec: testes/dados-referencia/sistemas-crd/sistemas-crd.spec.ts
+  CT-DR-B11.3:
+    titulo: 'Ordenar PreÃ§os, Locais e Semelhantes; em Semelhantes a ordem mantÃ©m-se entre pÃ¡ginas'
+    area: 'Sistemas CRD'
+    rota: /dados-referencia/sistemas-crd
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B11.3'
+    spec: testes/dados-referencia/sistemas-crd/sistemas-crd.spec.ts
+  CT-DR-A.1.8:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.8'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-B9.1:
+    titulo: 'Ver, Editar e Eliminar numa sÃ³ coluna (a 1.Âª)'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B9.1'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-B9.2:
+    titulo: 'CabeÃ§alho colapsÃ¡vel; PreÃ§os, ConvenÃ§Ãµes e Subsistemas num Ãºnico cartÃ£o e ordenam'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B9.2'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-B9.3:
+    titulo: 'Filtro de preÃ§os: mesmas validaÃ§Ãµes e filtro de Vacinas (B8.4â€“B8.6)'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B9.3'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C01-HD:
+    titulo: 'Novo tipo de preÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-HD'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C02-HD:
+    titulo: 'Novo tipo de preÃ§o: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-HD'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C06-HD:
+    titulo: 'Novo tipo de preÃ§o: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-HD'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C01-HD-EDIT:
+    titulo: 'Editar tipo de preÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-HD-EDIT'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C02-HD-EDIT:
+    titulo: 'Editar tipo de preÃ§o: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-HD-EDIT'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C06-HD-EDIT:
+    titulo: 'Editar tipo de preÃ§o: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-HD-EDIT'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C01-HDP:
+    titulo: 'Novo preÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-HDP'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C02-HDP:
+    titulo: 'Novo preÃ§o: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-HDP'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C06-HDP:
+    titulo: 'Novo preÃ§o: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-HDP'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C01-HDP-EDIT:
+    titulo: 'Editar preÃ§o: h1, grid padrÃ£o, Guardar ativo, "Voltar" Ã  esquerda'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C01-HDP-EDIT'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C02-HDP-EDIT:
+    titulo: 'Editar preÃ§o: Guardar com obrigatÃ³rios vazios mostra a mensagem de cada campo e nÃ£o envia'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C02-HDP-EDIT'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-C06-HDP-EDIT:
+    titulo: 'Editar preÃ§o: "Voltar" regressa Ã  tela anterior sem guardar'
+    area: 'Tipos de PreÃ§o HemodiÃ¡lise'
+    rota: /dados-referencia/tipos-preco-hemodialise
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” C06-HDP-EDIT'
+    spec: testes/dados-referencia/tipos-preco-hemodialise/tipos-preco-hemodialise.spec.ts
+  CT-DR-A.1.2:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Programa Troca de Seringas (ConvenÃ§Ãµes SICAD)'
+    rota: /dados-referencia/troca-seringas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.2'
+    spec: testes/dados-referencia/troca-seringas/troca-seringas.spec.ts
+  CT-DR-B3.1:
+    titulo: 'TÃ­tulo "Pesquisa ConvenÃ§Ãµes SICAD / Kits"'
+    area: 'Programa Troca de Seringas (ConvenÃ§Ãµes SICAD)'
+    rota: /dados-referencia/troca-seringas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B3.1'
+    spec: testes/dados-referencia/troca-seringas/troca-seringas.spec.ts
+  CT-DR-B3.2:
+    titulo: 'Aviso de filtros e erro do serviÃ§o aparecem em mensagens separadas'
+    area: 'Programa Troca de Seringas (ConvenÃ§Ãµes SICAD)'
+    rota: /dados-referencia/troca-seringas
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B3.2'
+    spec: testes/dados-referencia/troca-seringas/troca-seringas.spec.ts
+  CT-DR-B3.3:
+    titulo: '"Ir para facturas" no cabeÃ§alho (nÃ£o no rodapÃ©) e preÃ§os unitÃ¡rios num painel colapsÃ¡vel e ordenÃ¡vel'
+    area: 'Programa Troca de Seringas (ConvenÃ§Ãµes SICAD)'
+    rota: /dados-referencia/troca-seringas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B3.3'
+    spec: testes/dados-referencia/troca-seringas/troca-seringas.spec.ts
+  CT-DR-B3.4:
+    titulo: '"Ir para facturas" abre as faturas filtradas por esse cÃ³digo'
+    area: 'Programa Troca de Seringas (ConvenÃ§Ãµes SICAD)'
+    rota: /dados-referencia/troca-seringas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B3.4'
+    spec: testes/dados-referencia/troca-seringas/troca-seringas.spec.ts
+  CT-DR-A.1.7:
+    titulo: 'ConferÃªncia rÃ¡pida do padrÃ£o: A01 â†’ pesquisar â†’ A07 + A08 â†’ detalhe â†’ A12'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” A.1.7'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+  CT-DR-B8.1:
+    titulo: 'Exportar descarrega o XLSX com as colunas cÃ³digo, descriÃ§Ã£o e cÃ³digo de origem'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B8.1'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+  CT-DR-B8.2:
+    titulo: 'Ordenar e ir para a pÃ¡gina 2: ordenaÃ§Ã£o no servidor'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B8.2'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+  CT-DR-B8.3:
+    titulo: 'PreÃ§os, Regras de Idade e ConvenÃ§Ãµes colapsÃ¡veis e ordenÃ¡veis'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B8.3'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+  CT-DR-B8.4:
+    titulo: 'PreÃ§o mÃ¡ximo menor que o mÃ­nimo: validaÃ§Ã£o e o filtro nÃ£o Ã© aplicado'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B8.4'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+  CT-DR-B8.5:
+    titulo: 'PreÃ§o negativo ou data fim anterior Ã  data inÃ­cio: validaÃ§Ã£o'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: negativo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B8.5'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+  CT-DR-B8.6:
+    titulo: 'Intervalo de preÃ§os vÃ¡lido mostra sÃ³ os preÃ§os dentro do intervalo'
+    area: 'Vacinas'
+    rota: /dados-referencia/vacinas
+    tipo: positivo
+    requisitos: [RF57]
+    cenario_plano: 'Roteiro 24-09-2026 (padrÃµes de UI de Dados de ReferÃªncia) â€” B8.6'
+    spec: testes/dados-referencia/vacinas/vacinas.spec.ts
+
+  # --- ConferÃªncia â€” C1 VisualizaÃ§Ã£o (script de testes manuais 08-10-2026), PRD ConferÃªncia v0.1 ---
+  # Gerado a partir de `CAMADA=integracao npx playwright test testes/conferencia --list --reporter=json`.
+  CT-CONF-APR-01:
+    titulo: 'Contador do menu = cartÃ£o Â«PendentesÂ»'
+    area: 'AprovaÃ§Ãµes Pendentes'
+    rota: /motor-regras/aprovacoes
+    tipo: positivo
+    requisitos: [CONF-RF-35]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-APR-01'
+    spec: testes/conferencia/aprovacoes-pendentes/aprovacoes-pendentes.spec.ts
+  CT-CONF-APR-02:
+    titulo: 'Lista e filtros: Estado Â«PendenteÂ», cartÃ£o Â«AgendadosÂ», Limpar, Estado vazio'
+    area: 'AprovaÃ§Ãµes Pendentes'
+    rota: /motor-regras/aprovacoes
+    tipo: positivo
+    requisitos: [CONF-RF-35]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-APR-02'
+    spec: testes/conferencia/aprovacoes-pendentes/aprovacoes-pendentes.spec.ts
+  CT-CONF-APR-03:
+    titulo: 'Detalhe de um pedido pendente (sem decidir)'
+    area: 'AprovaÃ§Ãµes Pendentes'
+    rota: /motor-regras/aprovacoes
+    tipo: positivo
+    requisitos: [CONF-RF-35]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-APR-03'
+    spec: testes/conferencia/aprovacoes-pendentes/aprovacoes-pendentes.spec.ts
+  CT-CONF-APR-10:
+    titulo: 'Pedidos terminais (Aprovado, Rejeitado, Cancelado) sÃ³ de leitura'
+    area: 'AprovaÃ§Ãµes Pendentes'
+    rota: /motor-regras/aprovacoes
+    tipo: positivo
+    requisitos: [CONF-RF-35]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-APR-10'
+    spec: testes/conferencia/aprovacoes-pendentes/aprovacoes-pendentes.spec.ts
+  CT-CONF-APR-13:
+    titulo: 'Ids invÃ¡lidos'
+    area: 'AprovaÃ§Ãµes Pendentes'
+    rota: /motor-regras/aprovacoes
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-APR-13'
+    spec: testes/conferencia/aprovacoes-pendentes/aprovacoes-pendentes.spec.ts
+  CT-CONF-CKP-01:
+    titulo: 'Abrir o Cockpit pelo menu: ciclo por omissÃ£o, sem carregar'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-02]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-01'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-02:
+    titulo: 'Ciclos planeados nÃ£o aparecem no Cockpit'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-02]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-02'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-03:
+    titulo: 'Pesquisar mostra a grelha das 14 Ã¡reas pela ordem'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-01]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-03'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-04:
+    titulo: 'CartÃ£o Â«No sistema actualÂ» nÃ£o navega; Medicamentos Continente abre o detalhe'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-04'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-05:
+    titulo: 'Pesquisar sem ciclo mostra erro no campo e nÃ£o pede nada'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-RF-02]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-05'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-06:
+    titulo: 'Limpar repÃµe o estado inicial'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-06'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-07:
+    titulo: 'Ciclo no URL: pesquisa sozinho; ciclo inexistente volta ao estado inicial'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-02]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-07'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-08:
+    titulo: 'Estado da Ã¡rea coerente com o ciclo e o progresso'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RN-19, CONF-PRD-3.2]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-08'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-09:
+    titulo: 'KPIs do cartÃ£o MED Continente coerentes com o detalhe'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-01, CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-09'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-10:
+    titulo: 'Â«Actualizar dadosÂ» pede de novo o resumo das Ã¡reas'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-03]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-10'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-13:
+    titulo: 'Ciclo aberto Ã© acompanhado (SSE Â«eventosÂ» ou polling)'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-03, CONF-RNF-06]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-13'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-14:
+    titulo: 'Ciclo fechado nÃ£o Ã© acompanhado'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-03]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-14'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-15:
+    titulo: 'SaÃºde do ciclo em cada cartÃ£o ativo'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-09]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-15'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-CKP-16:
+    titulo: 'Â«VoltarÂ» do browser repÃµe o ciclo pesquisado antes'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CKP-16'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-01:
+    titulo: 'Abrir o detalhe de Medicamentos Continente'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-01'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-02:
+    titulo: 'Â«PrestaÃ§Ãµes rececionadasÂ»: distribuiÃ§Ã£o por lote soma o total'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-02'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-03:
+    titulo: 'Â«PrestaÃ§Ãµes enriquecidasÂ» â‰¤ rececionadas, com % coerente'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04, CONF-RN-01]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-03'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-04:
+    titulo: 'Â«ConferÃªncia AutomÃ¡ticaÂ»: progresso por workflow'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04, CONF-RN-03]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-04'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-05:
+    titulo: 'Â«ConferÃªncia ManualÂ»: tarefas por estado somam o total e o botÃ£o abre a SupervisÃ£o'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-05'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-06:
+    titulo: 'Fila de processamento'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-06'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-07:
+    titulo: 'Job de start automÃ¡tico: o clique sÃ³ abre o diÃ¡logo informativo'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-10]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-07'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-08:
+    titulo: 'SumÃ¡rio das ExecuÃ§Ãµes: estado coerente com processadas Ã— enriquecidas'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-08'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-09:
+    titulo: 'Registo de execuÃ§Ãµes: paginaÃ§Ã£o no URL sobrevive ao F5'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-09'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-10:
+    titulo: 'ExecuÃ§Ã£o Â«Em cursoÂ» / Â«SuspensoÂ» sem aÃ§Ã£o de pausar/retomar'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-07]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-10'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-11:
+    titulo: 'Â«Ver logsÂ» abre os Logs filtrados pela execuÃ§Ã£o'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-11'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-12:
+    titulo: 'Ã‚mbito de um disparo com recorte abre o modal Â«Recorte por â€¦Â»'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-12'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-13:
+    titulo: 'Ãrea inexistente na rota'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-13'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-14:
+    titulo: 'Detalhe sem ciclo'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-14'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-15:
+    titulo: 'Detalhe com ciclo inexistente (209912)'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: []
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-15'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-16:
+    titulo: 'Outras Ã¡reas ativas: tÃ­tulos, cartÃµes e workflows'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-04, CONF-RN-02, CONF-RN-03]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-16'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DET-17:
+    titulo: 'Â«VoltarÂ» regressa ao Cockpit com o mesmo ciclo'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DET-17'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-01:
+    titulo: 'Abrir Â«Nova execuÃ§Ã£oÂ» a partir do detalhe'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-01'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-02:
+    titulo: 'Confirmar sem workflow mostra validaÃ§Ã£o e nÃ£o abre o modal'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-02'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-03:
+    titulo: 'Workflow completo mostra a volumetria'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-03'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-04:
+    titulo: 'Cascata do Ã¢mbito: trocar o prestador limpa facturas e prestaÃ§Ãµes'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-04'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-05:
+    titulo: 'Pesquisa de prestador por NIF e por parte do nome'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-05'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-06:
+    titulo: 'CÃ³digos de erro do recorte de uma factura'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-05]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-06'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-07:
+    titulo: 'Ãrea em receÃ§Ã£o: o disparo fica bloqueado com a data-limite'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-RF-11, CONF-RN-01]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-07'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-08:
+    titulo: 'Recorte sem prestaÃ§Ãµes por conferir'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-RF-14]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-08'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-09:
+    titulo: 'Â«Incluir prestaÃ§Ãµes jÃ¡ conferidasÂ»: resumo e ciclo fechado'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-14, CONF-RN-22]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-09'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-10:
+    titulo: 'Tarefa manual forÃ§ada: validaÃ§Ã£o em MED e Â«Em breveÂ» em MCDT'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-RF-13]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-10'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-11:
+    titulo: 'Re-enriquecimento: explicaÃ§Ã£o em MED e Â«Em breveÂ» em MCDT/CRD'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RF-12]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-11'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-12:
+    titulo: 'Tecto de 10 000 itens'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RN-18]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-12'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-DSP-18:
+    titulo: 'URLs incompletas'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-DSP-18'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-E2E-05:
+    titulo: 'Data da mensagem de bloqueio = limite de receÃ§Ã£o no CalendÃ¡rio'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: positivo
+    requisitos: [CONF-RN-01]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-E2E-05'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-NEG-01:
+    titulo: 'Falha do servidor no Cockpit mostra a mensagem, sem ecrÃ£ branco'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: robustez
+    requisitos: [CONF-RNF-07]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-NEG-01'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-NEG-02:
+    titulo: 'Fila indisponÃ­vel nunca mostra 0'
+    area: 'Cockpit'
+    rota: /conferencia/cockpit
+    tipo: robustez
+    requisitos: [CONF-RF-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-NEG-02'
+    spec: testes/conferencia/cockpit/cockpit.spec.ts
+  CT-CONF-SUP-01:
+    titulo: 'Abrir: botÃµes, contadores e atualizaÃ§Ã£o a cada 30 s'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-47]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-01'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-02:
+    titulo: 'Painel de escaladas'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-46]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-02'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-03:
+    titulo: 'Pesquisa da pool: filtros coerentes e Limpar repÃµe Â«DisponÃ­velÂ»'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-47]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-03'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-04:
+    titulo: 'Totais da pesquisa = contadores'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-47]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-04'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-05:
+    titulo: 'Filtro Supervisor e o painel de escaladas'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-46]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-05'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-16:
+    titulo: 'SeleÃ§Ã£o de tarefas por pÃ¡gina e limite de 100'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-47, CONF-RN-18]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-16'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-17:
+    titulo: 'BotÃµes do drawer conforme o estado (sÃ³ observar)'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-47]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-17'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-SUP-20:
+    titulo: 'Exportar escaladas e pool'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-20'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-ALO-01:
+    titulo: 'Abrir a grelha de grupos a partir da SupervisÃ£o'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-48]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-ALO-01'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-ALO-02:
+    titulo: 'SugestÃ£o = âŒˆNa fila / 40âŒ‰'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-48]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-ALO-02'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-ALO-03:
+    titulo: 'Filtros Origem e Ciclo; Limpar repÃµe'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-ALO-03'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-ALO-09:
+    titulo: 'Abrir um grupo (sÃ³ leitura, sem tocar nos operadores)'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-48]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-ALO-09'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-ALO-07:
+    titulo: 'Grupo sem Ã¡rea na URL volta Ã  grelha'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: negativo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-ALO-07'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-ALO-08:
+    titulo: 'Exportar'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-ALO-08'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-PRI-01:
+    titulo: 'Abrir e pesquisar por Estado (vazio, Activo, Inactivo)'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-49]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-PRI-01'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-WL-01:
+    titulo: 'Abrir a Worklist: contadores e grelha antes de pesquisar'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-41]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WL-01'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-WL-02:
+    titulo: 'Pesquisar devolve sÃ³ as suspensas do prÃ³prio utilizador'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-41]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WL-02'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-WL-03:
+    titulo: 'Filtros: sÃ³ dÃ­gitos em Processo/PrestaÃ§Ã£o, Factura Â«contÃ©mÂ», Enter e Limpar'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WL-03'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-WL-08:
+    titulo: 'Drawer da tarefa: secÃ§Ãµes IdentificaÃ§Ã£o, Origem, Erros e Notas'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-41]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WL-08'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-WL-12:
+    titulo: 'Exportar a grelha; desativado antes de pesquisar e sem resultados'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WL-12'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-EXE-02:
+    titulo: 'Imagem lado a lado numa tarefa Fechada de MED (sem editar)'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-42]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-EXE-02'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-EXE-03:
+    titulo: 'Imagem e dados numa tarefa Fechada de MCDT'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-42]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-EXE-03'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-EXE-25:
+    titulo: 'HistÃ³rico da prestaÃ§Ã£o (tecla H, Â«SÃ³ notasÂ», Esc)'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-52]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-EXE-25'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-EXE-28:
+    titulo: 'Tarefa jÃ¡ fechada abre sÃ³ de leitura'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: positivo
+    requisitos: [CONF-RF-44]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-EXE-28'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-EXE-29:
+    titulo: 'Ids invÃ¡lidos'
+    area: 'ConferÃªncia Manual: Worklist'
+    rota: /conferencia/worklist
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-EXE-29'
+    spec: testes/conferencia/conferencia-manual-worklist/conferencia-manual-worklist.spec.ts
+  CT-CONF-CAL-01:
+    titulo: 'Abrir pelo menu redireciona para o ciclo corrente'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-15]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-01'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-02:
+    titulo: 'Seletor de ciclos: estado no rÃ³tulo e Â«Mostrar todos os ciclos cadastradosÂ»'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-15]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-02'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-03:
+    titulo: 'Tabela das 12 Ã¡reas'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-15]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-03'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-04:
+    titulo: 'Alertas de prazo sem bloqueio; ciclo fechado sem prazos'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-22, CONF-RN-15]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-04'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-05:
+    titulo: 'Banners do ciclo fechado e do planeado'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-21]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-05'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-06:
+    titulo: 'Marcos de uma Ã¡rea (modal sÃ³ de leitura)'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-18]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-06'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-07:
+    titulo: 'CalendÃ¡rio do mÃªs: navegaÃ§Ã£o, legenda e filtro Â«SÃ³ marcosÂ»'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-15]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-07'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-11:
+    titulo: 'Abrir a Ã¡rea MED de um ciclo planeado'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-15, CONF-RN-14]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-11'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-16:
+    titulo: 'Janela herdada: limite de receÃ§Ã£o sÃ³ de leitura'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RN-14]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-16'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-17:
+    titulo: 'Ãrea fechada: datas nÃ£o editÃ¡veis, sem gravar'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RN-14]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-17'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-18:
+    titulo: 'Ãrea nÃ£o migrada (HD): banner do sistema atual'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: []
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-18'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-22:
+    titulo: 'Marco com data efetiva: Planeada desativada'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-18]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-22'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-25:
+    titulo: 'Lista de tipos de marco sem editar/apagar'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-19]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-25'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-CAL-28:
+    titulo: 'Grelha de regras: 12 Ã¡reas Ã— 3 datas'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-RF-20]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-28'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-FER-01:
+    titulo: 'Abrir: tÃ­tulo, nota e filtros por omissÃ£o; a lista carrega sozinha'
+    area: 'GestÃ£o de Feriados'
+    rota: /conferencia/calendario/feriados
+    tipo: positivo
+    requisitos: [CONF-RF-23]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-FER-01'
+    spec: testes/conferencia/gestao-feriados/gestao-feriados.spec.ts
+  CT-CONF-FER-02:
+    titulo: 'Feriados gerados para 2026 (Nacional, AÃ§ores, Madeira)'
+    area: 'GestÃ£o de Feriados'
+    rota: /conferencia/calendario/feriados
+    tipo: positivo
+    requisitos: [CONF-RF-23, CONF-RN-16]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-FER-02'
+    spec: testes/conferencia/gestao-feriados/gestao-feriados.spec.ts
+  CT-CONF-FER-13:
+    titulo: 'Exportar as linhas filtradas; sem linhas o botÃ£o fica desativado'
+    area: 'GestÃ£o de Feriados'
+    rota: /conferencia/calendario/feriados
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-FER-13'
+    spec: testes/conferencia/gestao-feriados/gestao-feriados.spec.ts
+  CT-CONF-LOG-01:
+    titulo: 'Ãrea obrigatÃ³ria'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: negativo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-01'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-02:
+    titulo: 'Filtros de negÃ³cio por Ã¡rea'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-02'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-03:
+    titulo: 'Pesquisa pela cadeia: factura + Â«Acusou erroÂ» = Sim; ordem por omissÃ£o'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-03'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-04:
+    titulo: 'Data (de) posterior Ã  data (atÃ©)'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: negativo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-04'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-05:
+    titulo: 'Lote nÃ£o numÃ©rico: nenhum resultado, sem erro'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: negativo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-05'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-11:
+    titulo: 'Exportar'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-11'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-06:
+    titulo: 'Detalhe de uma execuÃ§Ã£o com erro'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-06'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-07:
+    titulo: 'CoerÃªncia entre os passos e o cabeÃ§alho'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-07'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-08:
+    titulo: 'Modal do passo com erro'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-08'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-09:
+    titulo: 'ExecuÃ§Ãµes com estado Â«ErroÂ» / Â«Erro de configuraÃ§Ã£oÂ»'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: []
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-09'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  CT-CONF-LOG-10:
+    titulo: 'Vindo do Cockpit: Â«Retirar o filtro da execuÃ§Ã£oÂ»'
+    area: 'Logs de ConferÃªncia'
+    rota: /motor-regras/execucoes
+    tipo: positivo
+    requisitos: [CONF-RF-37]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-LOG-10'
+    spec: testes/conferencia/logs-conferencia/logs-conferencia.spec.ts
+  PRE-01:
+    titulo: 'O ambiente usa a API real (sem MSW) e responde 200'
+    area: 'ConferÃªncia (menu)'
+    rota: /conferencia
+    tipo: positivo
+    requisitos: []
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” PRE-01'
+    spec: testes/conferencia/menu-conferencia.spec.ts
+  PRE-02:
+    titulo: 'Menu Â«ConferÃªnciaÂ» completo, com os Â«(em breve)Â» desativados'
+    area: 'ConferÃªncia (menu)'
+    rota: /conferencia
+    tipo: positivo
+    requisitos: [CONF-PRD-2.2]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” PRE-02'
+    spec: testes/conferencia/menu-conferencia.spec.ts
+  CT-CONF-MENU-01:
+    titulo: 'Â«Facturas conferidas com erro (em breve)Â» nÃ£o navega (nÃ£o implementado)'
+    area: 'ConferÃªncia (menu)'
+    rota: /conferencia
+    tipo: positivo
+    requisitos: [CONF-RF-26]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MENU-01'
+    spec: testes/conferencia/menu-conferencia.spec.ts
+  CT-CONF-MENU-02:
+    titulo: 'Â«AlarmÃ­stica (em breve)Â» nÃ£o navega (nÃ£o implementado)'
+    area: 'ConferÃªncia (menu)'
+    rota: /conferencia
+    tipo: positivo
+    requisitos: [CONF-RF-25]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MENU-02'
+    spec: testes/conferencia/menu-conferencia.spec.ts
+  CT-CONF-MENU-03:
+    titulo: 'EcrÃ£s sem item de menu: breadcrumb sob a SupervisÃ£o e a Worklist'
+    area: 'ConferÃªncia (menu)'
+    rota: /conferencia
+    tipo: positivo
+    requisitos: [CONF-PRD-2.2]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MENU-03'
+    spec: testes/conferencia/menu-conferencia.spec.ts
+  CT-CONF-NEG-05:
+    titulo: 'Filtros e resultados repostos ao voltar com o browser'
+    area: 'ConferÃªncia (menu)'
+    rota: /conferencia
+    tipo: robustez
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-NEG-05'
+    spec: testes/conferencia/menu-conferencia.spec.ts
+  CT-CONF-REG-01:
+    titulo: 'Lista e filtros (implementaÃ§Ã£o, tipo de erro, Ã¢mbito, estado)'
+    area: 'Regras de ConferÃªncia'
+    rota: /motor-regras/regras
+    tipo: positivo
+    requisitos: [CONF-RF-29]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-REG-01'
+    spec: testes/conferencia/regras-conferencia/regras-conferencia.spec.ts
+  CT-CONF-REG-02:
+    titulo: 'Filtro Erro: por cÃ³digo, por descriÃ§Ã£o e sem correspondÃªncia'
+    area: 'Regras de ConferÃªncia'
+    rota: /motor-regras/regras
+    tipo: positivo
+    requisitos: [CONF-RF-29]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-REG-02'
+    spec: testes/conferencia/regras-conferencia/regras-conferencia.spec.ts
+  CT-CONF-REG-03:
+    titulo: 'Detalhe de uma regra partilhada por 2 workflows'
+    area: 'Regras de ConferÃªncia'
+    rota: /motor-regras/regras
+    tipo: positivo
+    requisitos: [CONF-RF-29]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-REG-03'
+    spec: testes/conferencia/regras-conferencia/regras-conferencia.spec.ts
+  CT-CONF-REG-16:
+    titulo: 'Enquadramento legal da regra'
+    area: 'Regras de ConferÃªncia'
+    rota: /motor-regras/regras
+    tipo: positivo
+    requisitos: [CONF-RF-33]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-REG-16'
+    spec: testes/conferencia/regras-conferencia/regras-conferencia.spec.ts
+  CT-CONF-REG-17:
+    titulo: 'Ids invÃ¡lidos'
+    area: 'Regras de ConferÃªncia'
+    rota: /motor-regras/regras
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-REG-17'
+    spec: testes/conferencia/regras-conferencia/regras-conferencia.spec.ts
+  CT-CONF-WF-01:
+    titulo: 'Lista e filtros (AcrÃ³nimo, Modo, Estado)'
+    area: 'Workflows de ConferÃªncia'
+    rota: /motor-regras/workflows
+    tipo: positivo
+    requisitos: [CONF-RF-27]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WF-01'
+    spec: testes/conferencia/workflows-conferencia/workflows-conferencia.spec.ts
+  CT-CONF-WF-02:
+    titulo: 'Filtro Ãrea: Medicamentos, MCDT, CRD'
+    area: 'Workflows de ConferÃªncia'
+    rota: /motor-regras/workflows
+    tipo: positivo
+    requisitos: [CONF-RF-27]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WF-02'
+    spec: testes/conferencia/workflows-conferencia/workflows-conferencia.spec.ts
+  CT-CONF-WF-03:
+    titulo: 'Detalhe de MED_LOTE96: regras por fase somam o N.Âº Regras'
+    area: 'Workflows de ConferÃªncia'
+    rota: /motor-regras/workflows
+    tipo: positivo
+    requisitos: [CONF-RF-27, CONF-RN-04]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WF-03'
+    spec: testes/conferencia/workflows-conferencia/workflows-conferencia.spec.ts
+  CT-CONF-WF-12:
+    titulo: 'Ids invÃ¡lidos'
+    area: 'Workflows de ConferÃªncia'
+    rota: /motor-regras/workflows
+    tipo: negativo
+    requisitos: [CONF-PRD-5]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WF-12'
+    spec: testes/conferencia/workflows-conferencia/workflows-conferencia.spec.ts
+  CT-CONF-WF-15:
+    titulo: 'Versionamento e eliminaÃ§Ã£o do workflow'
+    area: 'Workflows de ConferÃªncia'
+    rota: /motor-regras/workflows
+    tipo: positivo
+    requisitos: [CONF-RF-36]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-WF-15'
+    spec: testes/conferencia/workflows-conferencia/workflows-conferencia.spec.ts
+
+  # --- 09-10-2026: MovimentaÃ§Ã£o entre ciclos (ccmsns-ui #67) e regressÃµes das anotaÃ§Ãµes manuais de 08-10 ---
+  CT-CONF-SUP-30:
+    titulo: 'Â«Resultados por pÃ¡ginaÂ» altera o nÃºmero de linhas da pool (anotaÃ§Ãµes 08-10)'
+    area: 'ConferÃªncia Manual: SupervisÃ£o'
+    rota: /conferencia/supervisao
+    tipo: positivo
+    requisitos: [CONF-RF-47, CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-SUP-30'
+    spec: testes/conferencia/conferencia-manual-supervisao/conferencia-manual-supervisao.spec.ts
+  CT-CONF-CAL-30:
+    titulo: 'Painel Â«CalendÃ¡rio do ciclo â€¦Â» com botÃ£o colapsar/expandir (anotaÃ§Ãµes 08-10)'
+    area: 'GestÃ£o de CalendÃ¡rio'
+    rota: /conferencia/calendario/visao-geral
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-CAL-30'
+    spec: testes/conferencia/gestao-calendario/gestao-calendario.spec.ts
+  CT-CONF-FER-20:
+    titulo: 'Colunas da lista de feriados ordenÃ¡veis por clique no cabeÃ§alho (anotaÃ§Ãµes 08-10)'
+    area: 'GestÃ£o de Feriados'
+    rota: /conferencia/calendario/feriados
+    tipo: positivo
+    requisitos: [CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-FER-20'
+    spec: testes/conferencia/gestao-feriados/gestao-feriados.spec.ts
+  CT-CONF-MOV-01:
+    titulo: 'Abrir pelo menu: aviso de exceÃ§Ã£o, separadores e grelha antes de pesquisar'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: positivo
+    requisitos: [CONF-MOV]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-01'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+  CT-CONF-MOV-02:
+    titulo: 'Filtros: Ã¡reas disponÃ­veis e NÂº do Processo sÃ³ com dÃ­gitos'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: negativo
+    requisitos: [CONF-MOV]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-02'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+  CT-CONF-MOV-03:
+    titulo: 'Pesquisar: colunas, situaÃ§Ã£o de elegibilidade e seleÃ§Ã£o sÃ³ dos elegÃ­veis'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: positivo
+    requisitos: [CONF-MOV]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-03'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+  CT-CONF-MOV-04:
+    titulo: 'Selecionar um processo elegÃ­vel mostra os 2 ciclos de destino adjacentes'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: positivo
+    requisitos: [CONF-MOV]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-04'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+  CT-CONF-MOV-05:
+    titulo: 'Resumo do diÃ¡logo de confirmaÃ§Ã£o (fechado com Â«CancelarÂ», nada Ã© gravado)'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: positivo
+    requisitos: [CONF-MOV]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-05'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+  CT-CONF-MOV-06:
+    titulo: 'HistÃ³rico carrega ao abrir, com o movimento Â«origem â†’ destinoÂ»'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: positivo
+    requisitos: [CONF-MOV]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-06'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+  CT-CONF-MOV-07:
+    titulo: 'Grelhas com exportaÃ§Ã£o (Manual C.8) e ordenaÃ§Ã£o por coluna (anotaÃ§Ãµes 08-10)'
+    area: 'MovimentaÃ§Ã£o entre ciclos'
+    rota: /conferencia/movimentacao-ciclos
+    tipo: positivo
+    requisitos: [CONF-MOV, CONF-TR]
+    cenario_plano: 'Script C1 VisualizaÃ§Ã£o (ConferÃªncia, 08-10-2026) â€” CT-CONF-MOV-07'
+    spec: testes/conferencia/movimentacao-ciclos/movimentacao-ciclos.spec.ts
+
+  # --- PadrÃµes das pesquisas de Consulta por Ãrea de PrestaÃ§Ã£o (16-10-2026) -------------------
+  # Um registo por caso de uso; cada caso corre uma variante por ecrÃ£ com o sufixo do ecrÃ£
+  # (`CT-CON-PAG-01-MED-FAT`, â€¦) e, na famÃ­lia FIL, tambÃ©m o campo (`â€¦-numero-da-factura`).
+  # Plano: docs/padroes-pesquisa-consulta-16-10-2026/plano-padroes-pesquisa.md
+  CT-CON-FIL-01:
+    titulo: 'Filtro de texto/nÃºmero devolve sÃ³ registos com o valor (um caso por campo)'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-01'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-02:
+    titulo: 'Identificador pesquisa por conteÃºdo parcial (nÂº factura, lote, receita/requisiÃ§Ã£o/prescriÃ§Ã£o)'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-02'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-03:
+    titulo: 'CÃ³digo pesquisa por igualdade exata (NIF, cÃ³digo de prestador, convenÃ§Ã£o)'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-03'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-04:
+    titulo: 'Filtro de data devolve o dia inteiro'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-04'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-05:
+    titulo: 'Cada opÃ§Ã£o de cada select devolve sÃ³ registos com essa descriÃ§Ã£o'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-05'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-06:
+    titulo: 'Prestador escolhido no autocomplete devolve sÃ³ registos com o NIF dele'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-06'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-08:
+    titulo: 'Filtro sem correspondÃªncia mostra a grelha vazia com a mensagem de sem resultados'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: negativo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-08'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-09:
+    titulo: 'Pesquisar sem filtros ou com combinaÃ§Ã£o insuficiente avisa e nÃ£o pesquisa'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: negativo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-09'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-10:
+    titulo: 'Â«LimparÂ» esvazia todos os campos de filtro'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-10'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-FIL-11:
+    titulo: 'Recarregar a pÃ¡gina mantÃ©m os filtros e os resultados'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-FIL-11'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-01:
+    titulo: 'Os selects abrem e mostram opÃ§Ãµes, sem vazias nem repetidas'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-01'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-02:
+    titulo: 'As opÃ§Ãµes dos selects mostram a descriÃ§Ã£o, nÃ£o o cÃ³digo'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-02'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-03:
+    titulo: 'As opÃ§Ãµes dos selects vÃªm do servidor, nÃ£o de uma lista fixa'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-03'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-05:
+    titulo: 'O mesmo domÃ­nio mostra as mesmas opÃ§Ãµes em dois ecrÃ£s'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-05'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-06:
+    titulo: 'O autocomplete do prestador sugere prestadores da Ã¡rea, pagina e limpa'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-06'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-07:
+    titulo: 'O autocomplete sem correspondÃªncia nÃ£o sugere nada e nÃ£o dÃ¡ erro'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: negativo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-07'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-OPC-08:
+    titulo: 'Cada select mostra o domÃ­nio que o rÃ³tulo indica (Cuidados Continuados)'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-OPC-08'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-ORD-01:
+    titulo: 'Todas as colunas com indicador ordenam por clique no cabeÃ§alho, no servidor'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-ORD-01'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-ORD-02:
+    titulo: '2.Âº clique ordena descendente e 3.Âº retira a ordenaÃ§Ã£o'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-ORD-02'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-ORD-03:
+    titulo: 'A ordenaÃ§Ã£o continua na pÃ¡gina seguinte'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-ORD-03'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-ORD-04:
+    titulo: 'A coluna Estado ordena pela descriÃ§Ã£o'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-ORD-04'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-ORD-05:
+    titulo: 'A ordenaÃ§Ã£o mantÃ©m-se ao mudar de pÃ¡gina e de tamanho'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-ORD-05'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-ORD-06:
+    titulo: 'A ordenaÃ§Ã£o fica no URL e mantÃ©m-se ao recarregar'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-ORD-06'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-01:
+    titulo: 'Â«Resultados por pÃ¡ginaÂ» tem as opÃ§Ãµes 10 / 15 / 25 / 50'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-01'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-02:
+    titulo: 'A grelha abre com 25 resultados por pÃ¡gina'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-02'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-03:
+    titulo: 'Cada opÃ§Ã£o de Â«Resultados por pÃ¡ginaÂ» mostra o nÂº certo de linhas'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-03'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-04:
+    titulo: 'Mudar o tamanho da pÃ¡gina na pÃ¡gina 2 volta Ã  1.Âª pÃ¡gina'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-04'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-05:
+    titulo: 'A pÃ¡gina seguinte mostra outros registos'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-05'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-06:
+    titulo: 'PÃ¡gina e tamanho ficam no URL e recarregar mantÃ©m a pesquisa'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-06'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-07:
+    titulo: 'Mudar de pÃ¡gina ou de tamanho mantÃ©m os filtros da pesquisa'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-07'
+    spec: testes/consulta-area-prestacao/<item>/<item>.spec.ts (padroes-pesquisa.ts)
+  CT-CON-PAG-08:
+    titulo: 'Quadro comparativo da paginaÃ§Ã£o e dos parÃ¢metros no URL (todos os ecrÃ£s)'
+    area: 'Consulta por Ãrea de PrestaÃ§Ã£o (24 ecrÃ£s)'
+    tipo: positivo
+    requisitos: [RF29]
+    cenario_plano: 'Plano padrÃµes das pesquisas (16-10-2026) â€” UC-PAG-08'
+    spec: testes/plano-de-testes/quadro-paginacao-consulta.spec.ts
